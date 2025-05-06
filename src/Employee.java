@@ -6,6 +6,7 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+    private double punchStartTime;
 
     //CONSTRUCTOR
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
@@ -42,5 +43,19 @@ public class Employee {
             return regularPay + overTimePay;
         }
 
+        public void punchIn(double time){
+            punchStartTime = time;
+            System.out.println(name + "punched in at" + time);
+
+        }
+        public void punchOut(double time){
+            if(time > punchStartTime){
+               double hoursWorkedToday = time - punchStartTime;
+               hoursWorked += hoursWorkedToday;
+                System.out.println(name + "Punched out at "+ time + " (" + hoursWorkedToday + "hours added)");
+            }else {
+                System.out.println("Invalid time!");
+            }
+        }
 }
 
