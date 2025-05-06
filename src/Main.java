@@ -21,6 +21,7 @@ public class Main {
         System.out.println("----------");
 
         //room test
+
         System.out.println(r1.getNumberOfBeds());
         System.out.println(r1.getPrice());
         System.out.println(r1.isOccupied());
@@ -35,6 +36,19 @@ public class Main {
         System.out.println("total hours worked: " + emp.getHoursWorked());
         System.out.println("total pay: $"+ emp.getTotalPay());
 
+        //hotel test
 
+    Hotel h = new Hotel("Hilton", 20, 40);
+        System.out.println("Available suites: "+ h.getAvailableSuites());
+        System.out.println("Available rooms: "+ h.getAvaliableRooms());
+
+        boolean booked = h.bookRoom(3, true);//3 suites
+        System.out.println("Booking 3 suites: "+ booked);
+
+        booked = h.bookRoom(20, false);
+        System.out.println("Booking 23 rooms: "+ booked);
+
+        System.out.println("Suites lef: "+ h.getAvailableSuites());
+        System.out.println("Rooms left: "+ h.getAvaliableRooms());
     }
 }

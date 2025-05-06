@@ -1,4 +1,4 @@
-import javax.swing.plaf.PanelUI;
+import java.time.LocalTime;
 
 public class Employee {
     private int employeeId;
@@ -45,17 +45,38 @@ public class Employee {
 
         public void punchIn(double time){
             punchStartTime = time;
-            System.out.println(name + "punched in at" + time);
+            System.out.println(name + " punched in at" + time);
 
         }
+        //overloading
+        public void punchIn(){
+            LocalTime now = LocalTime.now();
+            double hourPars = now.getHour() + now.getMinute()/60.0;
+            punchStartTime = hourPars;
+            System.out.println(name + " Punched in at "+ hourPars);
+        }
+
         public void punchOut(double time){
             if(time > punchStartTime){
                double hoursWorkedToday = time - punchStartTime;
                hoursWorked += hoursWorkedToday;
                 System.out.println(name + "Punched out at "+ time + " (" + hoursWorkedToday + "hours added)");
             }else {
-                System.out.println("Invalid time!");
+                System.out.println("Invalid time punch out time!");
             }
+        }
+        public void punchOut(){
+            LocalTime now  = LocalTime.now();
+            double hourPars = now.getHour() + now.getMinute() / 60.0;
+
+            if(hourPars > punchStartTime){
+                double hoursWorkedToday = hourPars - punchStartTime;
+                hoursWorked += hoursWorkedToday;
+                System.out.println(name + " Punched out at "+ hourPars + "( " + hoursWorkedToday);
+            }else{
+                System.out.println("Invalid punch out time!");
+            }
+
         }
 }
 
